@@ -10,16 +10,7 @@ import store from './redux/store';
 
 import App from 'src/components/App/App';
 
-// renderWithHotReload(getRouter());
-
 renderWithHotReload(App);
-
-// if (module.hot) {
-//   module.hot.accept('./router/router', () => {
-//     const getRouter = require('./router/router').default;
-//     renderWithHotReload(getRouter());
-//   });
-// }
 
 if (module.hot) {
   module.hot.accept('src/components/App/App', () => {
@@ -38,4 +29,4 @@ function renderWithHotReload(RootElement) {
       </Provider>
     </AppContainer>,
     document.getElementById('app'));
-}
+};
