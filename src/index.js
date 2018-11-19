@@ -7,10 +7,13 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
 import getRouter from 'router/router';
 import store from './redux/store';
+import './index.less';
 
 import App from 'src/components/App/App';
 
-renderWithHotReload(App);
+import RouterMap from "router/RouteMap";
+
+renderWithHotReload(RouterMap);
 
 if (module.hot) {
   module.hot.accept('src/components/App/App', () => {

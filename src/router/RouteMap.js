@@ -10,3 +10,23 @@ const RouterList = [
   }
 ];
 
+const RouterMap = () => {
+  return (
+    <Router>
+      <Switch>
+        {
+          RouterList.map(item => (
+            <Route
+              key={item.path}
+              exact={true}
+              path={item.path}
+              component={item.component}
+            />
+          ))
+        }
+      </Switch>
+    </Router>
+  )
+};
+
+export default RouterMap;
