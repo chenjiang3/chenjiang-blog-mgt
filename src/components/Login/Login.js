@@ -9,7 +9,13 @@ const FormItem = Form.Item;
 export default class Login extends Component {
 
   _handleSubmit = () => {
-
+    const {
+      doLogin,
+    } = this.props;
+    doLogin({
+      mobile: '18616708941',
+      password: '12345678',
+    });
   };
 
   render() {
@@ -22,7 +28,7 @@ export default class Login extends Component {
           <img alt={'logo'} src={'http://antd-admin.zuiidea.com/public/logo.svg'}/>
           <span>陈江-blog-管理系统</span>
         </div>
-        <Form onSubmit={this._handleSubmit}>
+        <Form>
           <FormItem hasFeedback={true}>
             {
               getFieldDecorator('userName', {
@@ -60,6 +66,7 @@ export default class Login extends Component {
               loading={false}
               type="primary"
               htmlType="submit"
+              onClick={this._handleSubmit}
               className="login-form-button">
               登录
             </Button>

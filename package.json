@@ -53,6 +53,8 @@
     "antd": "^3.10.7",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.11.0",
+    "base64-url": "^2.2.0",
+    "js-sha256": "^0.9.0",
     "qs": "^6.5.2",
     "rc-queue-anim": "^1.6.7",
     "rc-texty": "^0.2.0",
@@ -68,6 +70,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sjcl": "^1.0.8",
+    "store2": "^2.7.1"
   }
 }

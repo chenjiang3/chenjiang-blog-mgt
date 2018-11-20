@@ -36,6 +36,7 @@ const devConfig = {
         target: BASE_URL,
         secure: false,
         changeOrigin: true,
+        pathRewrite: { '^/api': '' },
       },
     }
   },
