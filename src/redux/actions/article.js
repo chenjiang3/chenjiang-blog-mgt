@@ -1,0 +1,3 @@
+export const ARTICLE_ADD_REQ = 'ARTICLE_ADD_REQ';
+export const ARTICLE_ADD_RSP = 'ARTICLE_ADD_RSP';
+

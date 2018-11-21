@@ -6,15 +6,18 @@ import highlight from 'highlight.js';
 
 import 'simplemde/dist/simplemde.min.css';
 
-const input = '# This is a header\n\nAnd this is a paragraph'
-
 export default class Editor extends Component {
 
   constructor(props) {
     super(props);
   }
 
+  getEditorContent = () => {
+    return this.smde.value();
+  };
+
   componentDidMount() {
+    this.props.onRef && this.props.onRef(this);
     this.smde = new SimpleMDE({
       element: document.getElementById('editor').childElementCount,
       autofocus: true,

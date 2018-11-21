@@ -9,13 +9,21 @@ import {
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import AddArticle from "src/components/AddArticle/AddArticle";
+import {ARTICLE_ADD_REQ} from "actions/article";
 
 const mapStateToProps = state => {
   return {}
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    addArticle: payload => {
+      dispatch({
+        type: ARTICLE_ADD_REQ,
+        payload,
+      })
+    },
+  };
 };
 
 export default connect(
