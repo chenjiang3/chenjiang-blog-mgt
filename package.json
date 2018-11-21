@@ -54,7 +54,9 @@
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.11.0",
     "base64-url": "^2.2.0",
+    "highlight.js": "^9.13.1",
     "js-sha256": "^0.9.0",
+    "marked": "^0.5.2",
     "qs": "^6.5.2",
     "rc-queue-anim": "^1.6.7",
     "rc-texty": "^0.2.0",
@@ -64,6 +66,7 @@
     "react-dom": "^16.6.3",
     "react-highlight": "^0.12.0",
     "react-loadable": "^5.5.0",
+    "react-markdown": "^4.0.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "react-spinkit": "^3.0.0",
@@ -71,6 +74,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0",
+    "simplemde": "^1.11.2",
     "sjcl": "^1.0.8",
     "store2": "^2.7.1"
   }

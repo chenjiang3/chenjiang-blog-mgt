@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux';
+import {AppContainer} from 'react-hot-loader';
+import {Provider} from 'react-redux';
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
@@ -26,9 +26,7 @@ function renderWithHotReload(RootElement) {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <Router>
-          <RootElement/>
-        </Router>
+        <RootElement/>
       </Provider>
     </AppContainer>,
     document.getElementById('app'));
