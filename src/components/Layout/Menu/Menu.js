@@ -16,6 +16,33 @@ export default class BlogMenu extends Component {
     };
   }
 
+  static getDerivedStateFromProps(nextProps, state) {
+    const {pathname, menuList} = nextProps;
+    if (state.pathname === pathname) {
+      return null;
+    }
+
+    let nextState = {};
+    menuList.forEach(items => {
+      if (Array.isArray(items.children)) {
+        items.children.forEach(item => {
+          if (item.url === pathname) {
+            nextState = {
+              key: item.key,
+              openKeys: items.key,
+            }
+          }
+        })
+      } else {
+        if (items.url === pathname) {
+          nextState = {key: items.key}
+        }
+      }
+    });
+    nextState = {...nextState, pathname};
+    return nextState;
+  }
+
   _onMenuItemClick = item => {
     this.setState({
       key: item.key,

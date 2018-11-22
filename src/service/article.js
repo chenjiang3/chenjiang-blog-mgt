@@ -3,11 +3,15 @@ import {stringify} from 'qs';
 
 const API = '/article';
 
-// export async function findByMobile({mobile}) {
-//   return request(`${USER_API}/find-by-mobile/${mobile}`, {
-//     method: 'GET',
-//   });
-// }
+export async function articleList({pageIndex, pageSize}) {
+  const params = {
+    pageIndex: pageIndex || 1,
+    pageSize: pageSize || 100,
+  };
+  return request(`${API}/list?${stringify(params)}`, {
+    method: 'GET',
+  })
+}
 
 export async function addArticle(params) {
   return request(`${API}/add`, {

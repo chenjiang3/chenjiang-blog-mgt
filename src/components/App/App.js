@@ -9,14 +9,14 @@ import Paths from "router/Paths";
 const {Sider, Content} = Layout;
 
 const menuList = [
-  {label: '首页', url: '/admin', icon: 'home', key: '1'},
+  {label: '首页', url: '/', icon: 'home', key: '1'},
   {
     children: [
       {
         icon: 'form',
         key: '2',
         label: '文章管理',
-        url: '/admin/edit-article'
+        url: Paths.articleList,
       },
       {
         icon: 'upload',

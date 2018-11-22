@@ -25,6 +25,11 @@ export default class BlogHeader extends Component {
     });
   };
 
+  _toggle = () => {
+    const {toggle} = this.props;
+    toggle && toggle();
+  };
+
   render() {
     const {
       isMobile,
@@ -43,7 +48,7 @@ export default class BlogHeader extends Component {
         {
           isMobile ? (
             <Popover content={children} placement={'bottomRight'} trigger={'click'}>
-              <Icon className={'trigger'} type={'bars'} onClick={() => {}} />
+              <Icon className={'trigger'} type={'bars'} onClick={this._toggle} />
             </Popover>
           )
             :
@@ -51,7 +56,7 @@ export default class BlogHeader extends Component {
             <Icon
               className={'trigger'}
               type={collapsed ? 'menu-unfold' : 'menu-fold' }
-              onClick={()=>{}}
+              onClick={this._toggle}
             />
           )
         }

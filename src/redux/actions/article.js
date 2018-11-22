@@ -1,3 +1,6 @@
 export const ARTICLE_ADD_REQ = 'ARTICLE_ADD_REQ';
 export const ARTICLE_ADD_RSP = 'ARTICLE_ADD_RSP';
 
+export const ARTICLE_LIST_REQ = 'ARTICLE_LIST_REQ';
+export const ARTICLE_LIST_RSP = 'ARTICLE_LIST_RSP';
+

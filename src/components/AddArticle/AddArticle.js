@@ -12,6 +12,7 @@ import {
 
 import React, {Component} from 'react';
 import Editor from "src/components/common/Editor/Editor";
+import Paths from "router/Paths";
 
 const {Option} = Select;
 const FormItem = Form.Item;
@@ -38,14 +39,6 @@ export default class AddArticle extends Component {
     } = this.props;
     validateFields && validateFields((err, values) => {
       if (!err) {
-        console.log(values);
-        console.log(this.editor && this.editor.getEditorContent());
-        // abstract: "fdsfsdfds"
-        // nature: "原创"
-        // rawFileLink: "fdsfsfsf"
-        // tag: "fdsfsdf"
-        // title: "fsfsdfsd"
-        // type: "typescript"
         const {
           abstract,
           nature,
@@ -61,6 +54,9 @@ export default class AddArticle extends Component {
           abstractContent: abstract,
           content: this.editor && this.editor.getEditorContent(),
           rawFileLink,
+          success: () => {
+            this.props.history.push(Paths.articleList);
+          }
         });
       }
     });
