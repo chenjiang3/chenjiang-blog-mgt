@@ -140,9 +140,9 @@ class App extends React.Component {
   render() {
     const {children, location} = this.props;
     const {collapsed, tagList, isMobile, theme} = this.state;
-    const isLogin = location.pathname === '/admin/login';
-    const isTransparent = location.pathname === '/admin/edit-collect';
-    const isIndex = location.pathname === '/admin';
+    const isLogin = location.pathname === '/login';
+    const isTransparent = location.pathname === '/edit-collect';
+    const isIndex = location.pathname === '/';
     return !isLogin ? (
       <Layout className="menu" style={{height: '100vh'}}>
         {!isMobile && (
@@ -182,6 +182,7 @@ class App extends React.Component {
         )}
         <Layout>
           <Header
+            {...this.props}
             collapsed={collapsed}
             toggle={this.toggle}
             isMobile={isMobile}>

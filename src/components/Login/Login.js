@@ -1,6 +1,7 @@
 import {Button, Form, Icon, Input} from 'antd';
 import {FormComponentProps} from 'antd/lib/form';
 import React, {Component} from 'react';
+// import {withRouter} from 'react-router-dom';
 import './style.less';
 
 const FormItem = Form.Item;
@@ -8,13 +9,27 @@ const FormItem = Form.Item;
 @Form.create()
 export default class Login extends Component {
 
-  _handleSubmit = () => {
+  _loginSuccess = () => {
+    this.props.history.push('/');
+  };
+
+  _handleSubmit = e => {
+    e.preventDefault();
     const {
+      form: {
+        validateFields,
+      },
       doLogin,
     } = this.props;
-    doLogin({
-      mobile: '18616708941',
-      password: '12345678',
+    validateFields && validateFields((err, values) => {
+      const {userName, password} = values;
+      if (userName && password) {
+        doLogin({
+          mobile: userName,
+          password,
+          success: this._loginSuccess,
+        });
+      }
     });
   };
 

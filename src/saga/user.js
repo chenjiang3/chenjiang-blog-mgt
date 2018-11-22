@@ -1,9 +1,18 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import {doLogin, findByMobile} from "src/service/user";
-import {USER_LOGIN_REQ, USER_LOGIN_RSP, USER_FINDBYMOBILE_RSP} from "actions/user";
+import {doLogin, doLogout, findByMobile} from "src/service/user";
+import {USER_LOGIN_REQ, USER_LOGIN_RSP, USER_FINDBYMOBILE_RSP, USER_LOGOUT_REQ} from "actions/user";
 import {passwordWithSalt, randomString} from "../utils/security";
+import {saveObject} from "src/utils/storage";
 
 const SALT_LENGTH = 16;
+
+function *yieldLogout(action) {
+  const result = yield call(doLogout, action.payload);
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+  const {success} = action.payload || {};
+  success && success();
+}
 
 function *yieldLogin(action) {
   const user = yield call(findByMobile, action.payload);
@@ -16,6 +25,8 @@ function *yieldLogin(action) {
   if (!user) {
     return;
   }
+
+  saveObject('user', user);
   const loginSalt = randomString(SALT_LENGTH);
   const {
     userId,
@@ -41,6 +52,16 @@ function *yieldLogin(action) {
       token,
     }
   });
+  if (token) {
+    saveObject('token', token);
+  }
+
+  const {success} = action.payload || {};
+  success && success();
+}
+
+export function *watchYieldLogout() {
+  yield takeLatest(USER_LOGOUT_REQ, yieldLogout);
 }
 
 export function *watchYieldLogin() {

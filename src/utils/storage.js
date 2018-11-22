@@ -2,6 +2,21 @@ import store from 'store2';
 
 export const globalSpace = 'global';
 
+export function saveObject(key, value) {
+  const v = JSON.stringify(value);
+  if (v) {
+    localStorage.setItem(key, v);
+  }
+}
+
+export function getObject(key) {
+  const v = localStorage.getItem(key);
+  if (v) {
+    return JSON.parse(v);
+  }
+  return null;
+}
+
 export async function remove(namespace, key) {
   return new Promise((resolve, reject) => {
     try {

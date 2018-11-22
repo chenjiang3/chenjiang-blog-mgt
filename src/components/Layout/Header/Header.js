@@ -10,8 +10,20 @@ import React, {Component} from 'react';
 
 const {Header} = Layout;
 import './style.less';
+import Paths from "router/Paths";
 
 export default class BlogHeader extends Component {
+
+  _onLogout = () => {
+    const {
+      doLogout,
+    } = this.props;
+    doLogout && doLogout({
+      success: () => {
+        this.props.history.push(Paths.login);
+      }
+    });
+  };
 
   render() {
     const {
@@ -21,7 +33,7 @@ export default class BlogHeader extends Component {
     } = this.props;
     const menu = (
       <Menu>
-        <Menu.Item key={'logout'} onClick={() => {}}>
+        <Menu.Item key={'logout'} onClick={this._onLogout}>
           退出登录
         </Menu.Item>
       </Menu>
