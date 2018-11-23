@@ -7,6 +7,8 @@ import AddArticle from "src/container/AddArticle";
 import ArticleList from 'src/container/ArticleList';
 import Paths from "router/Paths";
 import {getObject} from "src/utils/storage";
+import IndexPage from "../container/IndexPage";
+import ArticleSourceList from 'src/container/ArticleSourceList';
 
 const RouterList = [
   {
@@ -25,8 +27,13 @@ const RouterList = [
     auth: true,
   },
   {
-    component: AddArticle,
+    component: IndexPage,
     path: Paths.index,
+    auth: true,
+  },
+  {
+    component: ArticleSourceList,
+    path: Paths.articleSource,
     auth: true,
   }
 ];

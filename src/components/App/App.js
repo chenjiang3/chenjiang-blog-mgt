@@ -5,59 +5,9 @@ import BlogMenu from '../Layout/Menu/Menu'
 import Tags from '../Layout/Tags/Tags'
 import './style.less'
 import Paths from "router/Paths";
+import menuList from './menuList';
 
 const {Sider, Content} = Layout;
-
-const menuList = [
-  {label: '首页', url: '/', icon: 'home', key: '1'},
-  {
-    children: [
-      {
-        icon: 'form',
-        key: '2',
-        label: '文章管理',
-        url: Paths.articleList,
-      },
-      {
-        icon: 'upload',
-        key: '3',
-        label: '发表文章',
-        url: Paths.addArticle,
-      }
-    ],
-    icon: 'book',
-    key: '7',
-    label: '文章'
-  },
-  {
-    children: [
-      {label: '说说管理', url: '/admin/edit-say', icon: 'form', key: '5'},
-      {label: '发表说说', url: '/admin/add-say', icon: 'upload', key: '6'}
-    ],
-    icon: 'message',
-    key: '8',
-    label: '说说'
-  },
-  {
-    children: [
-      {
-        icon: 'form',
-        key: '13',
-        label: '收藏管理',
-        url: '/admin/edit-collect'
-      },
-      {
-        icon: 'upload',
-        key: '12',
-        label: '添加收藏',
-        url: '/admin/add-collect'
-      }
-    ],
-    icon: 'file-add',
-    key: '11',
-    label: '收藏'
-  }
-];
 
 class App extends React.Component {
 
@@ -66,7 +16,7 @@ class App extends React.Component {
     this.state = {
       collapsed: false,
       isMobile: false,
-      tagList: [{label: '首页', url: '/admin', icon: 'home', key: '1'}],
+      tagList: [{label: '首页', url: '/', icon: 'home', key: '1'}],
       theme: true
     }
   }
