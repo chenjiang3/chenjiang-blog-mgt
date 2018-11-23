@@ -4,4 +4,5 @@ export default {
   addArticle: '/article/add-article',
   articleList: '/article/edit-article',
   articleSource: '/article-source',
+  editArticleSource: '/article-source/edit'
 }

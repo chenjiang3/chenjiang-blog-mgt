@@ -9,6 +9,7 @@ import Paths from "router/Paths";
 import {getObject} from "src/utils/storage";
 import IndexPage from "../container/IndexPage";
 import ArticleSourceList from 'src/container/ArticleSourceList';
+import EditArticleSource from "src/container/EditArticleSource";
 
 const RouterList = [
   {
@@ -34,6 +35,11 @@ const RouterList = [
   {
     component: ArticleSourceList,
     path: Paths.articleSource,
+    auth: true,
+  },
+  {
+    component: EditArticleSource,
+    path: Paths.editArticleSource,
     auth: true,
   }
 ];

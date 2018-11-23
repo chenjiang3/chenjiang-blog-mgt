@@ -37,6 +37,12 @@ const menuList = [
         label: '文章来源列表',
         url: Paths.articleSource,
       },
+      {
+        icon: 'form',
+        key: '3-2',
+        label: '编辑文章来源',
+        url: Paths.editArticleSource,
+      },
     ],
   },
   {
