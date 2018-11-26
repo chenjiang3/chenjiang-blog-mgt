@@ -2,7 +2,7 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import {add, list} from "src/service/articleSource";
 import {
   ARTICLE_SOURCE_ADD_RSP, ARTICLE_SOURCE_ADD_REQ, ARTICLE_SOURCE_LIST_REQ,
-  ARTICLE_SOURCE_LIST_RSP
+  ARTICLE_SOURCE_LIST_RSP, ARTICLE_SOURCE_DELETE_BY_ID_REQ
 } from "actions/articleSource";
 import {deleteArticleSource} from "../service/articleSource";
 
@@ -41,4 +41,8 @@ export function *watchYieldAddArticleSource() {
 
 export function *watchYieldArticleSourceList() {
   yield takeLatest(ARTICLE_SOURCE_LIST_REQ, yieldGetList);
+}
+
+export function *watchYieldDeleteArticleSource() {
+  yield takeLatest(ARTICLE_SOURCE_DELETE_BY_ID_REQ, yieldDeleteById);
 }

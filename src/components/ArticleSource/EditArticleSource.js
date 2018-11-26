@@ -8,12 +8,14 @@ import {
   Input,
   Button,
   message,
+  Select
 } from 'antd';
 
 import React, {Component} from 'react';
 import Paths from "router/Paths";
 
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 @Form.create()
 export default class EditArticleSource extends Component {
@@ -44,23 +46,31 @@ export default class EditArticleSource extends Component {
     const {
       form: {getFieldDecorator},
     } = this.props;
+    const addonBefore = getFieldDecorator('type', {initialValue: 0})(
+      <Select style={{width: 120}}>
+        <Option value={0}>文章分类</Option>
+        <Option value={1}>文章来源</Option>
+      </Select>
+    );
+
     return (
       <div>
         <Form layout={'inline'}>
-          <FormItem hasFeedback={true} label={'文章来源'}>
+          <FormItem hasFeedback={true} label={'文章类型'}>
             {
               getFieldDecorator('name', {
                 rules: [
                   {
                     required: true,
-                    message: '请填写文章来源！'
+                    message: '请填写文章类型！'
                   }
                 ]
               })
               (
                 <Input
-                  placeholder={'请填写文章标题'}
-                  style={{width: 220}}
+                  addonBefore={addonBefore}
+                  placeholder={'请填写文章类型'}
+                  style={{width: 400}}
                 />
               )
             }

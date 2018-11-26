@@ -25,6 +25,13 @@ export default class AddArticle extends Component {
     this.editor = undefined;
   }
 
+  componentDidMount() {
+    const {
+      fetchArticleSourceList
+    } = this.props;
+    fetchArticleSourceList && fetchArticleSourceList();
+  };
+
   _onEditorRef = ref => {
     this.editor = ref;
   };
@@ -63,11 +70,32 @@ export default class AddArticle extends Component {
   };
 
   render() {
-    const {getFieldDecorator} = this.props.form;
-    const selectBefore = getFieldDecorator('nature', {initialValue: '原创'})(
+    const {
+      articleSourceList,
+      form: {
+        getFieldDecorator
+      }
+    } = this.props;
+
+    const initNature = articleSourceList.find(item => {
+      if (item.type === 1) {
+        return item;
+      }
+    }) || {};
+    const initType = articleSourceList.find(item => {
+      if (item.type === 0) {
+        return item;
+      }
+    }) || {};
+    const selectBefore = getFieldDecorator('nature', {initialValue: initNature.name || ""})(
       <Select style={{width: 70}}>
-        <Option value={'原创'}>原创</Option>
-        <Option value={'转载'}>转载</Option>
+        {
+          articleSourceList.map(item => {
+            if (item.type === 1) {
+              return <Option value={item.name} key={item.id}>{item.name}</Option>
+            }
+          })
+        }
       </Select>
     );
     return (
@@ -116,14 +144,18 @@ export default class AddArticle extends Component {
                     required: true,
                     message: '文章类型!'
                   }
-                ]
+                ],
+                initialValue: initType.name || '',
               })
               (
                 <Select style={{width: 220}}>
-                  <Option value={''}>请选择类型</Option>
-                  <Option value={'typescript'}>typescript</Option>
-                  <Option value={'javascript'}>javascript</Option>
-                  <Option value={'react'}>react</Option>
+                  {
+                    articleSourceList.map(item => {
+                      if (item.type === 0) {
+                        return <Option value={item.name}>{item.name}</Option>
+                      }
+                    })
+                  }
                 </Select>
               )
             }

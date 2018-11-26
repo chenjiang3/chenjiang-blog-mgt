@@ -29,18 +29,18 @@ const menuList = [
   {
     icon: 'book',
     key: '3',
-    label: '文章来源',
+    label: '文章类型',
     children: [
       {
         icon: 'form',
         key: '3-1',
-        label: '文章来源列表',
+        label: '文章类型列表',
         url: Paths.articleSource,
       },
       {
         icon: 'form',
         key: '3-2',
-        label: '编辑文章来源',
+        label: '编辑文章类型',
         url: Paths.editArticleSource,
       },
     ],

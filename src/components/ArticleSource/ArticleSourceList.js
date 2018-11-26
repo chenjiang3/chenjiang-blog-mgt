@@ -9,7 +9,8 @@ import {
   Table,
   Button,
   Modal,
-  Popconfirm
+  Popconfirm,
+  message
 } from 'antd';
 
 import React, {Component} from 'react';
@@ -20,9 +21,6 @@ export default class ArticleSourceList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      showDeleteModal: false,
-    };
 
     this.columns = [
       {
@@ -36,72 +34,85 @@ export default class ArticleSourceList extends Component {
         render: _ => <h4>{_.name}</h4>
       },
       {
+        key: 'type',
+        title: '类型',
+        render: _ => {
+          if (_.type == 0) {
+            return <h4>文章分类</h4>
+          } else {
+            return <h4>文章来源</h4>
+          }
+        }
+      },
+      {
         key: 'action',
         title: '操作',
-        render: _ => (
-          <span>
-        <Button
-          icon={'edit'}
-          type={'primary'}
-          size={'small'}
-          style={{marginRight: 10}}
-          onClick={_ => {}}
-        >
-          编辑
-        </Button>
-        <Button
-          icon={'delete'}
-          type={'danger'}
-          size={'small'}
-          onClick={this._onDeleteClick}
-        >
-          删除
-        </Button>
-      </span>
-        )
+        render: item => {
+          return (
+            <span>
+              <Button
+                icon={'edit'}
+                type={'primary'}
+                size={'small'}
+                style={{marginRight: 10}}
+                onClick={item => {
+                }}
+              >
+              编辑
+              </Button>
+              <Button
+                icon={'delete'}
+                type={'danger'}
+                size={'small'}
+                onClick={e => {
+                  e.preventDefault();
+                  this._onDeleteClick(item)
+                }}
+              >
+                删除
+              </Button>
+            </span>
+          );
+        }
       }
     ];
   }
 
   componentDidMount() {
+    this._loadList();
+  }
+
+  _loadList = () => {
     const {
       fetchArticleSourceList
     } = this.props;
     fetchArticleSourceList && fetchArticleSourceList();
-  }
+  };
 
   _onCreateArticle = e => {
     e.preventDefault();
     this.props.history.push(Paths.editArticleSource);
   };
 
-  _onDeleteClick = e => {
-    e.preventDefault();
-    this.setState({
-      showDeleteModal: true,
-    })
-  };
-
-  renderDeleteModal = () => {
+  _onDeleteClick = item => {
     const {
-      showDeleteModal
-    } = this.state;
-    return showDeleteModal ? (
-      <Popconfirm
-        onConfirm={() => {}}
-        onCancel={() => {
-          this.setState({
-            showDeleteModal: false,
-          })
-        }}
-        okText={'确定'}
-        cancelText={'取消'}
-        // centered={true}
-        title={'提示'}
-        // closable={true}
-        visible={showDeleteModal}
-      />
-    ) : null;
+      deleteById
+    } = this.props;
+    Modal.confirm({
+      title: '删除记录',
+      content: '确定删除该记录吗？',
+      okText: '确认',
+      cancelText: '取消',
+      onOk: () => {
+        deleteById && deleteById({
+          id: item.id,
+          success: text => {
+            message.success(text);
+            this._loadList();
+          }
+        });
+      }
+    });
   };
 
   render() {
@@ -126,7 +137,6 @@ export default class ArticleSourceList extends Component {
           bordered={true}
           rowKey={"id"}
         />
-        {this.renderDeleteModal()}
       </div>
     )
   }

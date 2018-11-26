@@ -1,7 +1,10 @@
 import {all} from 'redux-saga/effects';
 import {watchYieldLogin, watchYieldLogout} from "src/saga/user";
 import {watchYieldAddArticle, watchYieldArticleList} from 'src/saga/article';
-import {watchYieldAddArticleSource, watchYieldArticleSourceList} from "src/saga/articleSource";
+import {
+  watchYieldAddArticleSource, watchYieldArticleSourceList,
+  watchYieldDeleteArticleSource
+} from "src/saga/articleSource";
 
 export default function *rootSaga() {
   yield all([
@@ -11,5 +14,6 @@ export default function *rootSaga() {
     watchYieldArticleList(),
     watchYieldAddArticleSource(),
     watchYieldArticleSourceList(),
+    watchYieldDeleteArticleSource(),
   ]);
 }
