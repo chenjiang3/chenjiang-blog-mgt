@@ -5,14 +5,21 @@ import {
 
 const initState = {
   articleSourceList: [],
+  loading: false,
 };
 
 export default function reducer(state = initState, action) {
   switch (action.type) {
+    case ARTICLE_SOURCE_LIST_REQ:
+      return {
+        ...state,
+        loading: true,
+      };
     case ARTICLE_SOURCE_LIST_RSP:
       return {
         ...state,
         articleSourceList: action.payload.articleSourceList,
+        loading: false,
       };
     default:
       return state;

@@ -6,6 +6,7 @@ import {ARTICLE_LIST_REQ, ARTICLE_LIST_RSP} from "actions/article";
 const mapStateToProps = state => {
   return {
     articleList: state.article.articleList,
+    loading: state.article.loading,
   }
 };
 

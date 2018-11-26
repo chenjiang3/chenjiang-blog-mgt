@@ -10,11 +10,13 @@ import {
   Button,
   Modal,
   Popconfirm,
-  message
+  message,
+  Spin
 } from 'antd';
 
 import React, {Component} from 'react';
 import Paths from "router/Paths";
+import PageLoading from "src/components/common/PageLoading/PageLoading";
 
 @Form.create()
 export default class ArticleSourceList extends Component {
@@ -118,10 +120,11 @@ export default class ArticleSourceList extends Component {
   render() {
     const {
       form: {getFieldDecorator},
-      articleSourceList
+      articleSourceList,
+      loading
     } = this.props;
     return (
-      <div>
+      <PageLoading loading={loading}>
         <Button
           type={'primary'}
           htmlType={'submit'}
@@ -137,7 +140,7 @@ export default class ArticleSourceList extends Component {
           bordered={true}
           rowKey={"id"}
         />
-      </div>
+      </PageLoading>
     )
   }
 

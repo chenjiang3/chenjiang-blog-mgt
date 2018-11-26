@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, message, Modal, Table, Tag, Tooltip} from 'antd'
+import {Button, message, Modal, Table, Tag, Tooltip, Spin} from 'antd'
 import {ColumnProps} from 'antd/lib/table'
 
 import './style.less';
@@ -89,10 +89,11 @@ export default class ArticleList extends Component {
 
   render() {
     const {
-      articleList
+      articleList,
+      loading
     } = this.props;
     return (
-      <div>
+      <Spin spinning={loading}>
         <div className={'search-form'}>
           {this._renderSearch()}
         </div>
@@ -112,7 +113,7 @@ export default class ArticleList extends Component {
             total: 100
           }}
         />
-      </div>
+      </Spin>
     )
   }
 

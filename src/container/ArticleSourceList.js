@@ -15,6 +15,7 @@ import {ARTICLE_SOURCE_DELETE_BY_ID_REQ, ARTICLE_SOURCE_LIST_REQ} from "actions/
 const mapStateToProps = state => {
   return {
     articleSourceList: state.articleSource.articleSourceList,
+    loading: state.articleSource.loading,
   };
 };
 

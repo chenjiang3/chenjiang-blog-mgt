@@ -8,6 +8,7 @@ import {
   Select,
   Input,
   Button,
+  Spin
 } from 'antd';
 
 import React, {Component} from 'react';
