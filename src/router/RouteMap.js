@@ -10,6 +10,7 @@ import {getObject} from "src/utils/storage";
 import IndexPage from "../container/IndexPage";
 import ArticleSourceList from 'src/container/ArticleSourceList';
 import EditArticleSource from "src/container/EditArticleSource";
+import UserList from "src/container/UserList";
 
 const RouterList = [
   {
@@ -40,6 +41,11 @@ const RouterList = [
   {
     component: EditArticleSource,
     path: Paths.editArticleSource,
+    auth: true,
+  },
+  {
+    component: UserList,
+    path: Paths.userList,
     auth: true,
   }
 ];

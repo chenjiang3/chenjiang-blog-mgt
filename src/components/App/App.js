@@ -93,6 +93,7 @@ class App extends React.Component {
     const isLogin = location.pathname === '/login';
     const isTransparent = location.pathname === '/edit-collect';
     const isIndex = location.pathname === '/';
+    const user = localStorage.getItem('user');
     return !isLogin ? (
       <Layout className="menu" style={{height: '100vh'}}>
         {!isMobile && (

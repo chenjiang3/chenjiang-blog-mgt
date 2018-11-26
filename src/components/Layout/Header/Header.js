@@ -11,6 +11,7 @@ import React, {Component} from 'react';
 const {Header} = Layout;
 import './style.less';
 import Paths from "router/Paths";
+import {getObject} from "src/utils/storage";
 
 export default class BlogHeader extends Component {
 
@@ -27,7 +28,7 @@ export default class BlogHeader extends Component {
 
   _toggle = () => {
     const {toggle} = this.props;
-    toggle && toggle();
+    togHeadergle && toggle();
   };
 
   render() {
@@ -43,6 +44,7 @@ export default class BlogHeader extends Component {
         </Menu.Item>
       </Menu>
     );
+    const user = getObject('user') || {};
     return (
       <Header className={'header'}>
         {
@@ -63,7 +65,7 @@ export default class BlogHeader extends Component {
         <Dropdown overlay={menu} placement={'bottomLeft'}>
           <div className={'user'}>
             <Icon type={'user'} style={{marginRight: 5, fontSize: 20}}/>
-            <span>admin</span>
+            <span>{user.userName || ""}</span>
           </div>
         </Dropdown>
       </Header>

@@ -13,7 +13,7 @@ const menuList = [
     label: '文章',
     children: [
       {
-        icon: 'form',
+        icon: 'bars',
         key: '2-1',
         label: '文章管理',
         url: Paths.articleList,
@@ -32,7 +32,7 @@ const menuList = [
     label: '文章类型',
     children: [
       {
-        icon: 'form',
+        icon: 'bars',
         key: '3-1',
         label: '文章类型列表',
         url: Paths.articleSource,
@@ -46,33 +46,58 @@ const menuList = [
     ],
   },
   {
-    icon: 'message',
+    icon: 'user',
     key: '4',
-    label: '说说',
-    children: [
-      {label: '说说管理', url: '/admin/edit-say', icon: 'form', key: '4-1'},
-      {label: '发表说说', url: '/admin/add-say', icon: 'upload', key: '4-2'}
-    ],
-  },
-  {
-    icon: 'file-add',
-    key: '5',
-    label: '收藏',
+    label: '用户管理',
     children: [
       {
-        icon: 'form',
-        key: '5-1',
-        label: '收藏管理',
-        url: '/admin/edit-collect'
+        icon: 'bars',
+        key: '4-1',
+        label: '用户列表',
+        url: Paths.userList,
       },
       {
-        icon: 'upload',
-        key: '5-2',
-        label: '添加收藏',
-        url: '/admin/add-collect'
+        icon: 'edit',
+        key: '4-2',
+        label: '新增用户',
+        url: ''
+      },
+      {
+        icon: 'edit',
+        key: '4-3',
+        label: '修改用户',
+        url: '',
       }
     ],
   }
+  // {
+  //   icon: 'message',
+  //   key: '4',
+  //   label: '说说',
+  //   children: [
+  //     {label: '说说管理', url: '/admin/edit-say', icon: 'form', key: '4-1'},
+  //     {label: '发表说说', url: '/admin/add-say', icon: 'upload', key: '4-2'}
+  //   ],
+  // },
+  // {
+  //   icon: 'file-add',
+  //   key: '5',
+  //   label: '收藏',
+  //   children: [
+  //     {
+  //       icon: 'form',
+  //       key: '5-1',
+  //       label: '收藏管理',
+  //       url: '/admin/edit-collect'
+  //     },
+  //     {
+  //       icon: 'upload',
+  //       key: '5-2',
+  //       label: '添加收藏',
+  //       url: '/admin/add-collect'
+  //     }
+  //   ],
+  // }
 ];
 
 export default menuList;
