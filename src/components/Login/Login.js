@@ -42,7 +42,7 @@ export default class Login extends Component {
         <div className={'login'}>
           <div className={'logo'}>
             <img alt={'logo'} src={'http://antd-admin.zuiidea.com/public/logo.svg'}/>
-            <span>陈江-blog-管理系统</span>
+            <span>blog-管理系统</span>
           </div>
           <Form>
             <FormItem hasFeedback={true}>
