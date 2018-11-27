@@ -21,3 +21,13 @@ export async function doLogout() {
     method: 'DELETE',
   });
 }
+
+export async function userList({pageIndex, pageSize}) {
+  const param = {
+    pageIndex: pageIndex || 1,
+    pageSize: pageSize || 100,
+  };
+  return request(`${USER_API}/list?${stringify(param)}`, {
+    method: 'GET'
+  });
+}
