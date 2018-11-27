@@ -1,6 +1,13 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import {doLogin, doLogout, findByMobile} from "src/service/user";
-import {USER_LOGIN_REQ, USER_LOGIN_RSP, USER_FINDBYMOBILE_RSP, USER_LOGOUT_REQ} from "actions/user";
+import {doLogin, doLogout, findByMobile, userList} from "src/service/user";
+import {
+  USER_LOGIN_REQ,
+  USER_LOGIN_RSP,
+  USER_FINDBYMOBILE_RSP,
+  USER_LOGOUT_REQ,
+  USER_LIST_RESPONSE,
+  USER_LIST_REQUEST
+} from "actions/user";
 import {passwordWithSalt, randomString} from "../utils/security";
 import {saveObject} from "src/utils/storage";
 
@@ -60,10 +67,27 @@ function *yieldLogin(action) {
   success && success();
 }
 
+function *yieldUserList(action) {
+  const response = yield call(userList, action.payload);
+  if (response) {
+    yield put({
+      type: USER_LIST_RESPONSE,
+      payload: {
+        item: response,
+        total: response.length,
+      }
+    })
+  }
+}
+
 export function *watchYieldLogout() {
   yield takeLatest(USER_LOGOUT_REQ, yieldLogout);
 }
 
 export function *watchYieldLogin() {
   yield takeLatest(USER_LOGIN_REQ, yieldLogin);
+}
+
+export function *watchYieldUserList() {
+  yield takeLatest(USER_LIST_REQUEST, yieldUserList);
 }

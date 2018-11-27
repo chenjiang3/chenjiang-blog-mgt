@@ -53,9 +53,11 @@ export default class AddArticle extends Component {
           rawFileLink,
           tag,
           title,
-          type
+          type,
+          source
         } = values;
         addArticle && addArticle({
+          source,
           title,
           tags: tag,
           type,
@@ -88,7 +90,7 @@ export default class AddArticle extends Component {
         return item;
       }
     }) || {};
-    const selectBefore = getFieldDecorator('nature', {initialValue: initNature.name || ""})(
+    const selectBefore = getFieldDecorator('source', {initialValue: initNature.name || ""})(
       <Select style={{width: 70}}>
         {
           articleSourceList.map(item => {

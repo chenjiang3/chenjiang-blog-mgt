@@ -13,10 +13,11 @@ function *yieldAddArticle(action) {
     abstractContent,
     content,
     rawFileLink,
-    success
+    success,
+    source
   } = action.payload;
   const result = yield call(addArticle, {
-    title, tags, type, abstractContent, content, rawFileLink
+    title, tags, type, abstractContent, content, rawFileLink, source
   });
   if (result === true) {
     success && success();

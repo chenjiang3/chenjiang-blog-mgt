@@ -11,6 +11,7 @@ import IndexPage from "../container/IndexPage";
 import ArticleSourceList from 'src/container/ArticleSourceList';
 import EditArticleSource from "src/container/EditArticleSource";
 import UserList from "src/container/UserList";
+import UserDetail from 'src/container/UserDetail';
 
 const RouterList = [
   {
@@ -46,6 +47,11 @@ const RouterList = [
   {
     component: UserList,
     path: Paths.userList,
+    auth: true,
+  },
+  {
+    component: UserDetail,
+    path: Paths.userDetail,
     auth: true,
   }
 ];

@@ -10,12 +10,12 @@ const menuList = [
   {
     icon: 'book',
     key: '2',
-    label: '文章',
+    label: '文章管理',
     children: [
       {
         icon: 'bars',
         key: '2-1',
-        label: '文章管理',
+        label: '文章列表',
         url: Paths.articleList,
       },
       {
@@ -59,16 +59,23 @@ const menuList = [
       {
         icon: 'edit',
         key: '4-2',
-        label: '新增用户',
-        url: ''
+        label: '用户详情',
+        url: Paths.userDetail
       },
-      {
-        icon: 'edit',
-        key: '4-3',
-        label: '修改用户',
-        url: '',
-      }
     ],
+  },
+  {
+    icon: 'book',
+    key: '5',
+    label: '标签管理',
+    children: [
+      {
+        icon: 'bars',
+        key: '5-1',
+        label: '标签列表',
+        url: ''
+      }
+    ]
   }
   // {
   //   icon: 'message',

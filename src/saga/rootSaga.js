@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects';
-import {watchYieldLogin, watchYieldLogout} from "src/saga/user";
+import {watchYieldLogin, watchYieldLogout, watchYieldUserList} from "src/saga/user";
 import {watchYieldAddArticle, watchYieldArticleList} from 'src/saga/article';
 import {
   watchYieldAddArticleSource, watchYieldArticleSourceList,
@@ -15,5 +15,6 @@ export default function *rootSaga() {
     watchYieldAddArticleSource(),
     watchYieldArticleSourceList(),
     watchYieldDeleteArticleSource(),
+    watchYieldUserList(),
   ]);
 }

@@ -10,6 +10,7 @@ import {
 
 import React, {Component} from 'react';
 import PageLoading from "src/components/common/PageLoading/PageLoading";
+import Paths from "router/Paths";
 
 @Form.create()
 export default class UserList extends Component {
@@ -56,6 +57,7 @@ export default class UserList extends Component {
                 size={'small'}
                 style={{marginRight: 10}}
                 onClick={item => {
+                  this.props.history.push(Paths.userDetail);
                 }}
               >
               详情
@@ -83,10 +85,21 @@ export default class UserList extends Component {
   }
 
   _loadList = () => {
-
+    const {
+      fetchUserList
+    } = this.props;
+    fetchUserList && fetchUserList({
+      pageIndex: 1,
+      pageSize: 100,
+    });
   };
 
   render() {
+    const {
+      userList: {
+        item
+      }
+    } = this.props;
     return (
       <PageLoading>
         <Button
@@ -99,7 +112,7 @@ export default class UserList extends Component {
           新建
         </Button>
         <Table
-          dataSource={[]}
+          dataSource={item}
           columns={this.columns}
           bordered={true}
           rowKey={"id"}
