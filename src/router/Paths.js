@@ -6,5 +6,7 @@ export default {
   articleSource: '/article-source',
   editArticleSource: '/article-source/edit',
   userList: '/user/list',
-  userDetail: '/user/detail'
+  userDetail: '/user/detail',
+  addTag: '/tag/add',
+  tagList: '/tag/list'
 }

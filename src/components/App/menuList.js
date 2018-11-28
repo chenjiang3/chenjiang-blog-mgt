@@ -73,7 +73,13 @@ const menuList = [
         icon: 'bars',
         key: '5-1',
         label: '标签列表',
-        url: ''
+        url: Paths.tagList
+      },
+      {
+        icon: 'edit',
+        key: '5-2',
+        label: '新建标签',
+        url: Paths.addTag
       }
     ]
   }

@@ -6,6 +6,7 @@ import {
   Menu,
   Spin
 } from 'antd';
+import PropTypes from 'prop-types';
 
 import React, {Component} from 'react';
 
@@ -25,3 +26,7 @@ export default class PageLoading extends Component {
   }
 
 }
+
+PageLoading.propTypes = {
+  loading: PropTypes.bool.isRequired,
+};

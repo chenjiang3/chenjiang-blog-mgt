@@ -12,6 +12,8 @@ import ArticleSourceList from 'src/container/ArticleSourceList';
 import EditArticleSource from "src/container/EditArticleSource";
 import UserList from "src/container/UserList";
 import UserDetail from 'src/container/UserDetail';
+import AddTag from 'src/container/AddTag';
+import TagList from 'src/container/TagList';
 
 const RouterList = [
   {
@@ -52,6 +54,16 @@ const RouterList = [
   {
     component: UserDetail,
     path: Paths.userDetail,
+    auth: true,
+  },
+  {
+    component: AddTag,
+    path: Paths.addTag,
+    auth: true,
+  },
+  {
+    component: TagList,
+    path: Paths.tagList,
     auth: true,
   }
 ];

@@ -5,6 +5,7 @@ import {
   watchYieldAddArticleSource, watchYieldArticleSourceList,
   watchYieldDeleteArticleSource
 } from "src/saga/articleSource";
+import {watchYieldAddTag, watchYieldTagList} from "src/saga/tag";
 
 export default function *rootSaga() {
   yield all([
@@ -16,5 +17,7 @@ export default function *rootSaga() {
     watchYieldArticleSourceList(),
     watchYieldDeleteArticleSource(),
     watchYieldUserList(),
+    watchYieldAddTag(),
+    watchYieldTagList()
   ]);
 }
